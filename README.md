@@ -1,2 +1,1 @@
-# tanuj-simonGame
-Simon Game
+#Simon Game
