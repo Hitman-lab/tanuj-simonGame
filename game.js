@@ -36,12 +36,12 @@ function nextSequence() {
     $('#' + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
     
     playSound(randomChosenColour);
-}
+};
 
 function playSound(musicName) {
     let audio = new Audio('sounds/' + musicName + '.mp3');
     audio.play();
-}
+};
 
 function animationPress(currentColour) {
     let colour = $('#' + currentColour);
@@ -50,7 +50,7 @@ function animationPress(currentColour) {
     setTimeout(function() {
         colour.removeClass('pressed');
     }, 50);
-}
+};
 
 function checkAnswer(currentLevel) {
     if(gamePattern[currentLevel] === userClickedPattern[currentLevel]){
@@ -62,5 +62,20 @@ function checkAnswer(currentLevel) {
         }
     }else{
         console.log('wrong');
+        playSound("wrong");
+
+        $('body').addClass("game-over");
+        setTimeout(function() {
+            $('body').removeClass('game-over');
+        },200);
+        
+        $('#level-title').text('Game Over 😁! press any key to start over!');
+        startOver();
     }
-}
+};
+
+function startOver() {
+    level = 0;
+    gamePattern = [];
+    started = false;
+};
